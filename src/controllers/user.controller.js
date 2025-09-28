@@ -77,3 +77,35 @@ export const getUsersByIdController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const onlineStatusController = async (req, res) => {
+  try {
+    let { id } = req.params;
+    let { isOnline } = req.body;
+    console.log(id, isOnline);
+    
+    if (!id) {
+      return res.status(400).json({ message: "User id is required" });
+    }
+    await userModel.findByIdAndUpdate({ _id: id }, { isOnline });
+    const user = await userModel.findById({ _id: id });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const typingStatusController = async (req, res) => {
+   try {
+    let { id } = req.params;
+    let { isTyping } = req.body;
+    if (!id) {
+      return res.status(400).json({ message: "User id is required" });
+    }
+    await userModel.findByIdAndUpdate({ _id: id }, { isTyping });
+    const user = await userModel.findById({ _id: id });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

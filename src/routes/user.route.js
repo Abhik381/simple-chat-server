@@ -4,7 +4,9 @@ import {
   registerController,
   loginController,
   getUsersController,
-  getUsersByIdController
+  getUsersByIdController,
+  onlineStatusController,
+  typingStatusController
 } from "../controllers/user.controller.js";
 
 router.get("/", (req, res) => {
@@ -15,5 +17,7 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 router.get("/get-user-name/:name", getUsersController);
 router.get("/get-user-id/:id", getUsersByIdController);
+router.patch("/online-status/:id", onlineStatusController);
+router.patch("/typing-status/:id", typingStatusController);
 
 export default router;

@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "+91",
   },
+  isOnline: {
+    type: Boolean,
+    default: false,
+  },
+  isTyping: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const user = mongoose.model("user", userSchema);

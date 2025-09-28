@@ -1,6 +1,7 @@
 import express from "express";
 import userRoute from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js";
+import conversationRoute from "./routes/conversation.route.js";
 import cors from "cors";
 
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoute);
 app.use("/api/messages", messageRoute);
+app.use("/api/conversations", conversationRoute);
 
 
 export default app;
